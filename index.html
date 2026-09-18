@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Laith_LG Site</title>
+<title>Laith_LG | Profile</title>
 
 <!-- FontAwesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -13,10 +13,12 @@
 <script src="https://cdn.jsdelivr.net/npm/skinview3d@2.2.0/bundles/skinview3d.bundle.js"></script>
 
 <style>
-/* Local Monocraft Font Setup */
+/* Local Monocraft Light Font Setup */
 @font-face {
   font-family: 'Monocraft';
-  src: url('./assets/fonts/Monocraft.ttf') format('truetype');
+  src: url('./assets/fonts/weights/Monocraft-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
@@ -24,6 +26,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Monocraft', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -98,8 +102,7 @@ body::before {
 
 .name {
   margin-top: 20px;
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 24px;
   color: #FFFFFF;
   text-shadow: 2px 2px 0px #000, 0 0 10px rgba(255, 255, 255, 0.3);
 }
@@ -130,7 +133,6 @@ body::before {
   color: #FFFFFF;
   text-decoration: none;
   font-size: 13px;
-  font-weight: bold;
   text-shadow: 1px 1px 0px #000;
   box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
   transition: all 0.25s ease;
@@ -198,7 +200,7 @@ body::before {
   <!-- MINECRAFT STYLE SERVER IP -->
   <div class="server-box">
     <span class="server-label">Server Address</span>
-    IP: comingsoon ..
+    IP: YOUR_SERVER_IP.aternos.me
   </div>
 
 </div>
@@ -209,7 +211,6 @@ body::before {
       canvas: document.getElementById("skin_container"),
       width: 150,
       height: 150,
-      /* ضع اسم حسابك باللعبة بدلاً من Steve ليظهر سكنك */
       skin: "https://mineskin.eu/skin/Steve"
   });
 
