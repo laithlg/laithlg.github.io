@@ -36,54 +36,56 @@ body {
   background: url("https://preview.redd.it/transfer-the-sky-and-clouds-from-one-shader-to-another-v0-tjlctiza59fc1.jpg?width=1080&crop=smart&auto=webp&s=58988636b13e96be95be67ea278f96be4b06f52e") center/cover no-repeat;
 }
 
-/* Dark Overlay */
+/* Background Overlay */
 body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(4px);
+  background: radial-gradient(circle, rgba(15, 10, 25, 0.5) 0%, rgba(5, 5, 10, 0.85) 100%);
+  backdrop-filter: blur(5px);
 }
 
+/* Red & Purple Background Glow */
 .bg-glow {
   position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(170, 0, 170, 0.25), transparent 60%);
-  filter: blur(60px);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 0, 0, 0.2), rgba(170, 0, 170, 0.25) 50%, transparent 70%);
+  filter: blur(80px);
   z-index: 0;
 }
 
+/* Main Profile Panel */
 .card {
-  width: 420px;
-  background: rgba(15, 15, 20, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  padding: 30px;
+  width: 400px;
+  background: rgba(18, 18, 24, 0.75);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px);
+  border-radius: 16px;
+  padding: 32px 24px;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(255, 255, 255, 0.03);
   position: relative;
   z-index: 1;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 0 35px rgba(170, 0, 170, 0.35),
-              0 30px 80px rgba(0, 0, 0, 0.9);
+  transform: translateY(-5px);
+  border-color: rgba(255, 0, 0, 0.3);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.25), 0 20px 50px rgba(0, 0, 0, 0.9);
 }
 
-/* 3D Skin Container Slot */
+/* 3D Skin Display Slot */
 .avatar-skin {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
   margin: 0 auto;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.4);
-  border: 2px solid rgba(170, 0, 170, 0.5);
-  box-shadow: 0 0 20px rgba(170, 0, 170, 0.4);
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 8px 20px rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,11 +97,11 @@ body::before {
 }
 
 .name {
-  margin-top: 18px;
+  margin-top: 20px;
   font-size: 26px;
   font-weight: 700;
-  color: #AA00AA;
-  text-shadow: 2px 2px 0px #000;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 0px #000, 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .handle {
@@ -110,48 +112,62 @@ body::before {
   text-shadow: 1px 1px 0px #000;
 }
 
-/* YOUTUBE LINK BUTTON */
+/* YOUTUBE RED BUTTON */
 .socials {
-  margin-top: 22px;
-  display: flex;
-  justify-content: center;
+  margin-top: 24px;
 }
 
-.socials a {
+.yt-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
-  padding: 12px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 13px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #FF0000, #CC0000);
+  border: 1px solid #FF4444;
   color: #FFFFFF;
   text-decoration: none;
-  font-size: 14px;
-  transition: 0.25s;
+  font-size: 13px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #000;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+  transition: all 0.25s ease;
 }
 
-.socials a:hover {
-  transform: translateY(-3px);
-  color: #FF2222;
-  box-shadow: 0 0 20px rgba(255, 34, 34, 0.4);
-  background: rgba(255, 255, 255, 0.12);
+.yt-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  background: linear-gradient(135deg, #FF2222, #DD0000);
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
 }
 
-/* SERVER IP BOX */
+.yt-btn i {
+  font-size: 18px;
+}
+
+/* MINECRAFT STYLE SERVER IP BOX */
 .server-box {
   margin-top: 16px;
   padding: 12px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px dashed rgba(85, 255, 85, 0.4);
-  font-size: 12px;
+  border-radius: 8px;
+  background: #000000;
+  border: 2px solid #55FF55;
+  box-shadow: inset 0 0 8px rgba(85, 255, 85, 0.3);
+  font-size: 11px;
   color: #55FF55;
   word-break: break-all;
   user-select: all;
   text-shadow: 1px 1px 0px #000;
+  position: relative;
+}
+
+.server-label {
+  font-size: 9px;
+  color: #AAAAAA;
+  display: block;
+  margin-bottom: 4px;
+  text-transform: uppercase;
 }
 </style>
 </head>
@@ -171,17 +187,18 @@ body::before {
   <div class="name">Laith_LG</div>
   <div class="handle">MINECRAFT COMPETITIVE PLAYER</div>
 
-  <!-- YOUTUBE LINK -->
+  <!-- RED YOUTUBE BUTTON -->
   <div class="socials">
-    <a href="https://youtube.com/@YOUR_YOUTUBE_LINK" target="_blank">
+    <a href="https://youtube.com/@YOUR_YOUTUBE_LINK" target="_blank" class="yt-btn">
       <i class="fa-brands fa-youtube"></i>
       YouTube Channel
     </a>
   </div>
 
-  <!-- SERVER IP -->
+  <!-- MINECRAFT STYLE SERVER IP -->
   <div class="server-box">
-    IP: comingsoon..
+    <span class="server-label">Server Address</span>
+    IP: comingsoon ..
   </div>
 
 </div>
@@ -190,9 +207,9 @@ body::before {
   // Render Interactive 3D Skin
   let skinViewer = new skinview3d.SkinViewer({
       canvas: document.getElementById("skin_container"),
-      width: 140,
-      height: 140,
-      /* استبدل Steve باسم حسابك الأصلي بجيم ماينكرافت */
+      width: 150,
+      height: 150,
+      /* ضع اسم حسابك باللعبة بدلاً من Steve ليظهر سكنك */
       skin: "https://mineskin.eu/skin/Steve"
   });
 
