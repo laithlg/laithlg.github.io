@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Laith_LG Site</title>
+
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- 3D Skin Viewer Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skinview3d@2.2.0/bundles/skinview3d.bundle.js"></script>
+
+<style>
+/* Local Monocraft Font Setup */
+@font-face {
+  font-family: 'Monocraft';
+  src: url('./assets/fonts/Monocraft.ttf') format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Monocraft', monospace;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+  background: url("https://preview.redd.it/transfer-the-sky-and-clouds-from-one-shader-to-another-v0-tjlctiza59fc1.jpg?width=1080&crop=smart&auto=webp&s=58988636b13e96be95be67ea278f96be4b06f52e") center/cover no-repeat;
+}
+
+/* Dark Overlay */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+.bg-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(170, 0, 170, 0.25), transparent 60%);
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.card {
+  width: 420px;
+  background: rgba(15, 15, 20, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 1;
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 0 35px rgba(170, 0, 170, 0.35),
+              0 30px 80px rgba(0, 0, 0, 0.9);
+}
+
+/* 3D Skin Container Slot */
+.avatar-skin {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(170, 0, 170, 0.5);
+  box-shadow: 0 0 20px rgba(170, 0, 170, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+}
+
+.avatar-skin:active {
+  cursor: grabbing;
+}
+
+.name {
+  margin-top: 18px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #AA00AA;
+  text-shadow: 2px 2px 0px #000;
+}
+
+.handle {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #55FF55;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0px #000;
+}
+
+/* YOUTUBE LINK BUTTON */
+.socials {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+.socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.25s;
+}
+
+.socials a:hover {
+  transform: translateY(-3px);
+  color: #FF2222;
+  box-shadow: 0 0 20px rgba(255, 34, 34, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* SERVER IP BOX */
+.server-box {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px dashed rgba(85, 255, 85, 0.4);
+  font-size: 12px;
+  color: #55FF55;
+  word-break: break-all;
+  user-select: all;
+  text-shadow: 1px 1px 0px #000;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-glow"></div>
+
+<div class="card">
+
+  <!-- 3D SKIN VIEWER -->
+  <div class="avatar-skin">
+    <canvas id="skin_container"></canvas>
+  </div>
+
+  <!-- NAME & SUBTITLE -->
+  <div class="name">Laith_LG</div>
+  <div class="handle">MINECRAFT COMPETITIVE PLAYER</div>
+
+  <!-- YOUTUBE LINK -->
+  <div class="socials">
+    <a href="https://youtube.com/@YOUR_YOUTUBE_LINK" target="_blank">
+      <i class="fa-brands fa-youtube"></i>
+      YouTube Channel
+    </a>
+  </div>
+
+  <!-- SERVER IP -->
+  <div class="server-box">
+    IP: comingsoon..
+  </div>
+
+</div>
+
+<script>
+  // Render Interactive 3D Skin
+  let skinViewer = new skinview3d.SkinViewer({
+      canvas: document.getElementById("skin_container"),
+      width: 140,
+      height: 140,
+      /* استبدل Steve باسم حسابك الأصلي بجيم ماينكرافت */
+      skin: "https://mineskin.eu/skin/Steve"
+  });
+
+  skinViewer.fov = 70;
+  skinViewer.zoom = 0.75;
+
+  skinViewer.animation = new skinview3d.WalkingAnimation();
+  skinViewer.animation.speed = 0.6;
+
+  let controls = skinview3d.createOrbitControls(skinViewer);
+  controls.enableZoom = false;
+</script>
+
+</body>
+</html>
